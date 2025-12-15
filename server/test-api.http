@@ -1,0 +1,22 @@
+# /server/test-api.http
+
+### VARIABLES
+@playerId = 41fd6860-0d99-47b0-b906-3eda5539fc8b
+
+### GET Route Test
+GET http://localhost:3000/
+
+### POST Player
+POST http://localhost:3000/api/players
+Content-Type: application/json
+
+{
+    "name": "Ryan",
+    "age": 67
+}
+
+### GET all players
+GET http://localhost:3000/api/players
+
+### GET player by ID
+GET http://localhost:3000/api/players/{{playerId}}
