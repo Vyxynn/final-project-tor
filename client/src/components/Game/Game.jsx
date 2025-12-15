@@ -1,68 +1,96 @@
-// client/src/components/Game/Game.jsx
-import { useState, useEffect } from "react";
-import Board from "./Board";
-import GameStatus from "./GameStatus";
-// import PlayerSetup from "../PlayerSetup";
-import {
-  checkForWin,
-  isValidMove,
-  applyMove,
-  switchPlayer,
-  createInitialGameState,
-} from "../../utils/gameLogic";
+// client/src/components/PlayerSetup.jsx
+import { useState } from "react";
 
-export default function Game() {
-  const [gameState, setGameState] = useState(createInitialGameState());
+export default function PlayerSetup({ onPlayerSet }) {
+  const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const { board, currentPlayer, gameOver, winner, winningCombo } = gameState;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleCellClick = (position) => {
-    if (gameOver) return;
+    // Clear any previous errors
+    setError("");
 
-    // validate move
-    const validation = isValidMove(board, position);
-    if (!validation.valid) {
-      console.log("Invalid move:", validation.reason);
+    // Validate name
+    if (!name.trim()) {
+      setError("Please enter your name");
       return;
     }
-    // apply move
-    const newBoard = applyMove(board, position, currentPlayer);
-    // check for win/draw
-    const result = checkForWin(newBoard);
-    // update state
-    setGameState({
-      board: newBoard,
-      currentPlayer: result.winner
-        ? currentPlayer
-        : switchPlayer(currentPlayer),
-      gameOver: result.winner !== null,
-      winner: result.winner,
-      winningCombo: result.winningCombo,
-    });
-  };
-  /* Reset the Game */
-  const handleReset = () => {
-    setGameState(createInitialGameState());
+
+    // Set loading state
+    setLoading(true);
+
+    try {
+      // Call backend API
+      const response = await fetch("http://localhost:3000/api/players", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: name.trim() }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Save to localStorage
+        localStorage.setItem("playerId", data.player.id);
+        localStorage.setItem("playerName", data.player.name);
+
+        // Call parent callback with player data
+        onPlayerSet(data.player);
+
+        console.log("✓ Player created:", data.player);
+      } else {
+        // Handle API error
+        setError(data.error || "Failed to create player");
+      }
+    } catch (err) {
+      console.error("Error creating player:", err);
+      setError("Could not connect to server. Make sure backend is running.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <>
-      <div className="game-container">
-        <h1>Tic-Tac-Toe</h1>
-        <GameStatus
-          currentPlayer={currentPlayer}
-          winner={winner}
-          gameOver={gameOver}
-        />
-        <Board
-          board={board}
-          onCellClick={handleCellClick}
-          winningCombo={winningCombo}
-        />
-        <button className={`reset-button`} onClick={handleReset}>
-          New Game
-        </button>
+    <div className="player-setup">
+      <div className="player-setup-card">
+        <h2>Welcome to Tic-Tac-Toe!</h2>
+        <p className="subtitle">Enter your name to start playing</p>
+
+        {error && <div className="error-message">{error}</div>}
+
+        <form onSubmit={handleSubmit} className="player-form">
+          <div className="form-group">
+            <label htmlFor="playerName">Player Name</label>
+            <input
+              id="playerName"
+              type="text"
+              placeholder="Enter your name..."
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              disabled={loading}
+              className="player-input"
+              autoFocus
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading || !name.trim()}
+            className="btn btn-primary"
+          >
+            {loading ? "Creating Player..." : "Start Game"}
+          </button>
+        </form>
+
+        <div className="help-text">
+          <p>🎮 Play against yourself or a friend!</p>
+          <p>📊 Your wins and losses will be tracked</p>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
