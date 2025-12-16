@@ -1,5 +1,5 @@
 /* client/src/styles/main.css */
-@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -17,12 +17,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.app {
-  width: 100%;
-  max-width: 500px;
-  padding: 10px;
 }
 
 .game-container {
@@ -117,7 +111,7 @@ body {
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
+  max-width: 100em;
   margin: 0 auto;
   text-align: center;
 }
@@ -127,7 +121,7 @@ body {
 }
 
 .player-setup p {
-  color: #8C271E;
+  color: #8c271e;
   margin-bottom: 1.5rem;
 }
 
@@ -200,19 +194,19 @@ body {
   border-radius: 1rem;
   padding: 2.5rem;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  max-width: 450px;
+  max-width: 50em;
   width: 100%;
   text-align: center;
 }
 
 .player-setup-card h2 {
-  color: #8C271E;
+  color: #8c271e;
   margin-bottom: 0.5rem;
   font-size: 2rem;
 }
 
 .player-setup-card .subtitle {
-  color: #8C271E;
+  color: #8c271e;
   margin-bottom: 2rem;
   font-size: 1rem;
 }
@@ -331,7 +325,7 @@ body {
 }
 
 .help-text p {
-  color: #8C271E;
+  color: #8c271e;
   font-size: 0.875rem;
   margin: 0.5rem 0;
 }

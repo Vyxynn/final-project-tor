@@ -9,20 +9,16 @@ export default function PlayerSetup({ onPlayerSet }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Clear any previous errors
     setError("");
 
-    // Validate name
     if (!name.trim()) {
       setError("Please enter your name");
       return;
     }
 
-    // Set loading state
     setLoading(true);
 
     try {
-      // Call backend API
       const response = await fetch("http://localhost:3000/api/players", {
         method: "POST",
         headers: {
@@ -34,16 +30,13 @@ export default function PlayerSetup({ onPlayerSet }) {
       const data = await response.json();
 
       if (data.success) {
-        // Save to localStorage
         localStorage.setItem("playerId", data.player.id);
         localStorage.setItem("playerName", data.player.name);
 
-        // Call parent callback with player data
         onPlayerSet(data.player);
 
         console.log("✓ Player created:", data.player);
       } else {
-        // Handle API error
         setError(data.error || "Failed to create player");
       }
     } catch (err) {
