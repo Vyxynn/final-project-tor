@@ -35,7 +35,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/players
 
 ### Get Player by ID (replace with actual ID from create response)
-GET http://localhost:3000/api/players/PLAYER-ID-HERE
+GET http://localhost:3000/api/players/0a8b00e0-dba2-4c3b-b6b5-3ee292224245
 
 ### Get Player by Name
 GET http://localhost:3000/api/players/name/Ryan
@@ -45,7 +45,7 @@ GET http://localhost:3000/api/players/name/Ryan
 ### ==========================================
 
 ### Ryan Wins (replace with Ryan's ID)
-POST http://localhost:3000/api/players/RYAN-ID-HERE/stats
+POST http://localhost:3000/api/players/0a8b00e0-dba2-4c3b-b6b5-3ee292224245/stats
 Content-Type: application/json
 
 {
@@ -53,7 +53,7 @@ Content-Type: application/json
 }
 
 ### Ryan Wins Again
-POST http://localhost:3000/api/players/RYAN-ID-HERE/stats
+POST http://localhost:3000/api/players/0a8b00e0-dba2-4c3b-b6b5-3ee292224245/stats
 Content-Type: application/json
 
 {
@@ -61,7 +61,7 @@ Content-Type: application/json
 }
 
 ### Ryan Loses
-POST http://localhost:3000/api/players/RYAN-ID-HERE/stats
+POST http://localhost:3000/api/players/0a8b00e0-dba2-4c3b-b6b5-3ee292224245/stats
 Content-Type: application/json
 
 {
@@ -69,7 +69,7 @@ Content-Type: application/json
 }
 
 ### Alice Wins
-POST http://localhost:3000/api/players/ALICE-ID-HERE/stats
+POST http://localhost:3000/api/players/987c3871-e030-4381-8b58-4f9b7930ec85/stats
 Content-Type: application/json
 
 {
@@ -77,7 +77,7 @@ Content-Type: application/json
 }
 
 ### Alice Ties
-POST http://localhost:3000/api/players/ALICE-ID-HERE/stats
+POST http://localhost:3000/api/players/987c3871-e030-4381-8b58-4f9b7930ec85/stats
 Content-Type: application/json
 
 {
