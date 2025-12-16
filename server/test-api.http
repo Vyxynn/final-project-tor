@@ -5,30 +5,30 @@
 ### Health Check
 GET http://localhost:3000/
 
-### Create Player - Ryan
+### Create Player - Talan
 # @name createRyan
 POST http://localhost:3000/api/players
 Content-Type: application/json
 
 {
-  "name": "Ryan"
+  "name": "Talan"
 }
 
-### Create Player - Alice
+### Create Player - Rikky
 # @name createAlice
 POST http://localhost:3000/api/players
 Content-Type: application/json
 
 {
-  "name": "Alice"
+  "name": "Rikky"
 }
 
-### Create Player - Bob
+### Create Player - Vi
 POST http://localhost:3000/api/players
 Content-Type: application/json
 
 {
-  "name": "Bob"
+  "name": "Vi"
 }
 
 ### Get All Players

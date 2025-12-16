@@ -349,6 +349,27 @@ body {
   margin: 0;
 }
 
+.existing-player-info {
+  background: #e3f2fd;
+  border: 2px solid #2196f3;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.existing-player-info .stats {
+  font-weight: 600;
+  color: #1976d2;
+  margin: 0.5rem 0;
+}
+
+.existing-player-info .info-text {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0.5rem 0 0 0;
+}
+
 /* ==========================================
      RESPONSIVE DESIGN
      ========================================== */
