@@ -38,7 +38,6 @@ export default function PlayerSetup({ onPlayerSet }) {
         localStorage.setItem("playerId", data.player.id);
         localStorage.setItem("playerName", data.player.name);
 
-        // Call parent callback with player data
         onPlayerSet(data.player);
 
         console.log("✓ Player created:", data.player);
@@ -57,7 +56,8 @@ export default function PlayerSetup({ onPlayerSet }) {
   return (
     <div className="player-setup">
       <div className="player-setup-card">
-        <h2>Welcome to Tic-Tac-Toe!</h2>
+        <h2>Welcome to</h2>
+        <h2>Tic-Tac-Toe!</h2>
         <p className="subtitle">Enter your name to start playing</p>
 
         {error && <div className="error-message">{error}</div>}
