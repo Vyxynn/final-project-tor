@@ -10,6 +10,12 @@ The PlayerSetup component handles player registration and login flow.
 - **Required:** Yes
 - **Description:** Callback function called when player is successfully created
 - **Parameters:** `player` object with `{ id, name, wins, losses, ties, totalGames, createdAt }`
+^ comes from Game.JSX 
+```jsx
+ if (!player) {
+    return <PlayerSetup onPlayerSet={setPlayer} />;
+  }
+```
 
 ## Usage
 
@@ -26,3 +32,5 @@ function App() {
     </>
   );
 }
+```
+

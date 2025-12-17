@@ -17,6 +17,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+ 
 }
 
 .game-container {
@@ -24,6 +25,7 @@ body {
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
 }
 
 .game-container h1 {
@@ -40,8 +42,7 @@ body {
 }
 
 .game-status.active {
-  background: #e3f2fd;
-  color: #1976d2;
+  color: #8c271e;
 }
 
 .board {
@@ -89,12 +90,13 @@ body {
   }
 }
 
-.reset-button {
+.reset-button, .log-out {
   width: 100%;
   padding: 12px;
   font-size: 1rem;
   font-weight: bold;
-  background: #667eea;
+  background: #8c271e;
+  margin-bottom: 1em;
   color: white;
   border: none;
   border-radius: 8px;
@@ -102,15 +104,14 @@ body {
   transition: background 0.2s ease;
 }
 
-.reset-button:hover {
-  background: #5568d3;
+.reset-button:hover, .log-out:hover {
+  background: #143A03;
 }
 /* Player Setup */
 .player-setup {
-  background: white;
   border-radius: 1rem;
   padding: 2rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); */
   max-width: 100em;
   margin: 0 auto;
   text-align: center;
@@ -169,12 +170,12 @@ body {
 }
 
 .btn-primary {
-  background: #667eea;
+  background: #143A03;
   color: white;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: #5568d3;
+  background: #143A03;
 }
 
 /* ==========================================
@@ -187,6 +188,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  margin: 2em;
 }
 
 .player-setup-card {
@@ -235,7 +237,7 @@ body {
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: #8c271e;
   font-weight: 600;
   font-size: 0.95rem;
 }
@@ -252,7 +254,7 @@ body {
 
 .player-input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #143A03;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
@@ -284,12 +286,12 @@ body {
   background: #8c271e;
   color: white;
   width: 100%;
-  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 6px #E4FDD8
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 12px #143A03
 }
 
 .btn-primary:active:not(:disabled) {
@@ -298,7 +300,7 @@ body {
 
 .btn-secondary {
   background: #f5f5f5;
-  color: #333;
+  color: #8c271e;
   border: 2px solid #e0e0e0;
 }
 
@@ -338,20 +340,19 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid #e0e0e0;
 }
 
 .player-info h1 {
   font-size: 1.5rem;
-  color: #333;
+  color: #8c271e;
   margin: 0;
 }
 
 .existing-player-info {
-  background: #e3f2fd;
-  border: 2px solid #2196f3;
+  background: #E4FDD8;
+  border: 2px solid #143A03;
   border-radius: 0.5rem;
   padding: 1rem;
   margin-top: 1rem;
@@ -360,7 +361,7 @@ body {
 
 .existing-player-info .stats {
   font-weight: 600;
-  color: #1976d2;
+  color: #143A03;
   margin: 0.5rem 0;
 }
 
@@ -368,6 +369,97 @@ body {
   font-size: 0.875rem;
   color: #666;
   margin: 0.5rem 0 0 0;
+}
+
+/* ==========================================
+     LEADERBOARD
+     ========================================== */
+.leaderboard {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    margin: 2em;
+}
+
+.leaderboard h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #8c271e;
+}
+
+.leaderboard.loading,
+.leaderboard.error {
+    text-align: center;
+    color: #8c271e;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.leaderboard-table th {
+    background: #8c271e;
+    color: white;
+    padding: 0.75rem 0.5rem;
+    text-align: left;
+    font-size: 0.875rem;
+}
+
+.leaderboard-table th:first-child {
+    border-top-left-radius: 0.5rem;
+}
+
+.leaderboard-table th:last-child {
+    border-top-right-radius: 0.5rem;
+}
+
+.leaderboard-table td {
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.875rem;
+}
+
+.leaderboard-table tr:last-child td {
+    border-bottom: none;
+}
+
+.leaderboard-table tr:hover {
+    background: #f5f5f5;
+}
+
+.leaderboard-table .rank {
+    font-weight: bold;
+    color: #667eea;
+    text-align: center;
+}
+
+.leaderboard-table .player-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.leaderboard-table .wins {
+    color: #2e7d32;
+    font-weight: 600;
+    text-align: center;
+}
+
+.leaderboard-table .losses {
+    color: #c62828;
+    text-align: center;
+}
+
+.leaderboard-table .ties {
+    color: #f57c00;
+    text-align: center;
+}
+
+.leaderboard-table .total,
+.leaderboard-table .win-rate {
+    text-align: center;
+    font-weight: 500;
 }
 
 /* ==========================================

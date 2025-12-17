@@ -99,9 +99,9 @@ export default function Game() {
       <div className="game-container">
         <h1>Tic-Tac-Toe</h1>
         <div className="player-info">
-          <p>Welcome, {player.name}!</p>
+          <p>Welcome, {player.name}! | </p>
           <p className="stats">
-            Wins: {player.wins} | Losses: {player.losses} | Ties: {player.ties}
+             Wins: {player.wins} | Losses: {player.losses} | Ties: {player.ties}
           </p>
         </div>
         <GameStatus
@@ -118,7 +118,7 @@ export default function Game() {
           New Game
         </button>
 
-        <button onClick={handleLogOut}>Log Out</button>
+        <button className={`log-out`} onClick={handleLogOut}>Log Out</button>
       </div>
     </>
   );
