@@ -24,20 +24,20 @@
 - [✓] Saves player name to localStorage
 - [✓] Loads from localStorage on page refresh
 - [✓] Skips setup if player exists
-- [x] Clears localStorage on logout
+- [✓] Clears localStorage on logout
 
 ## Feature 4: User Flow
 - [✓] Transitions from setup to game
 - [✓] Displays player name in game
-- [x] Logout returns to setup
-- [x] Game board resets on logout
+- [✓] Logout returns to setup
+- [✓] Game board resets on logout
 
 ## Feature 5: Error Handling
-- [x] Shows error for empty name
-- [x] Shows error for duplicate name
-- [x] Shows error for server connection failure
-- [x] Error messages are user-friendly
-- [x] Can recover from errors
+- [✓] Shows error for empty name
+- [✓] Shows error for duplicate name
+- [✓] Shows error for server connection failure
+- [✓] Error messages are user-friendly
+- [✓] Can recover from errors
 
 ## Feature 6: UI/UX
 - [✓] Responsive on mobile - could be more
