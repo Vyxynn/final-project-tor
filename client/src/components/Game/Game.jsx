@@ -38,6 +38,12 @@ export default function Game() {
       winningCombo: result.winningCombo,
     });
   };
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    return window.location.reload();
+  };
+
   const handleReset = () => {
     setGameState(createInitialGameState());
     hasUpdatedStatsRef.current = false;
@@ -111,6 +117,8 @@ export default function Game() {
         <button className={`reset-button`} onClick={handleReset}>
           New Game
         </button>
+
+        <button onClick={handleLogOut}>Log Out</button>
       </div>
     </>
   );

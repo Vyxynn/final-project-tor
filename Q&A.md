@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+Full-Stack Tic-Tac-Toe: Essential Review Questions
+>>>>>>> 1f33c9fd9e937a83fef1b3f4c1a35937c54ccbc5
 
 # Full-Stack Tic-Tac-Toe: Essential Review Questions
 
@@ -7,7 +11,7 @@ Q2: How do individual Cells have access to the Game state when they are clicked?
 Q3: What does onPlayerSet refer to and where does it come from? Trace this prop from PlayerSetup through to its origin.
 Q4: What do the square brackets [] indicate as the second argument of the useEffect hook? What happens if you include dependencies vs. leave it empty?
 Q5: What happens when we use a ternary operator inside of a JSX return statement and what are the use cases? Give an example from the project.
-Q6: In <Cell onClick={() => onCellClick(index)} />, why do we need the arrow function instead of just onClick={onCellClick(index)}?
+Q6: In ``<Cell onClick={() => onCellClick(index)} />``, why do we need the arrow function instead of just ``onClick={onCellClick(index)}``?
 Q7: Why do we store the player ID and name in localStorage instead of just keeping them in React state? What happens when you refresh the page?
 
 ## Backend - Express & API (7 Questions) - **Vi**
@@ -25,5 +29,9 @@ Q16: What is the difference between .get() and .all() at the end of a db.prepare
 Q17: Why do we send an object with specific player properties from the getPlayer function instead of just returning player directly from the database?
 Q18: In the leaderboard query, explain the formula (wins * 1.0 / total_games). Why multiply by 1.0? What happens without it?
 Q19: Why do we use UUIDs (uuidv4()) for player IDs instead of auto-incrementing integers (1, 2, 3...)? Give at least two advantages.
+<<<<<<< HEAD
 Q20: In the ORDER BY clause: ORDER BY wins DESC, (wins * 1.0 / total_games) DESC, why do we sort by TWO things? What problem does this solve?
 
+=======
+Q20: In the ORDER BY clause: ORDER BY wins DESC, (wins * 1.0 / total_games) DESC, why do we sort by TWO things? What problem does this solve?
+>>>>>>> 1f33c9fd9e937a83fef1b3f4c1a35937c54ccbc5
