@@ -39,9 +39,9 @@ Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remot
 
 Q9: What is the significance of req.params and when is it used? Give an example from the project where we use req.params vs req.body.
 
-Req.params needs to exist in order to grab specific values of an object from an API call. Req.body is used to gather all key/value pairs from a call. 
+Req.params needs to exist in order to grab specific values of an object from an API call. Req.body is used to gather all key/value pairs from a call.
 
-// FROM SERVER.JS // 
+// FROM SERVER.JS //
 ```js
 app.get("/api/players/:id", (req, res) => {
   try {
@@ -111,13 +111,30 @@ Q13: Why do we use res.status(201) for creating a player instead of res.status(2
 
 Q14: Why do we use limit=10 when fetching from api/leaderboard instead of fetching all players?
 
-It would be easier to read, most people don't really care about ALL of players, especially if there are hundreds of them. 
+It would be easier to read, most people don't really care about ALL of players, especially if there are hundreds of them.
 
 ## Database - SQLite (6 Questions) - **Talan**
 Q15: What is the significance of using question marks ? in our db.prepare() statements? Why not just use string interpolation like `SELECT * FROM players WHERE id = '${playerId}'`?
+
+ The question marks are used to input the data into the db.prepare() statement. Using this instead of string interpolation makes the code more readable and faster to run, because it does not need to parse it every time it is run.
+
 Q16: What is the difference between .get() and .all() at the end of a db.prepare() statement? When should you use each one?
+
+ .get() returns the first matching row, and .all() returns all matching rows. You would use .get() if you expect to get one result, such as when you are changing values in a player sheet, .all() would be used when you expect multiple results, like when you want to view all the players’ data.
+
 Q17: Why do we send an object with specific player properties from the getPlayer function instead of just returning player directly from the database?
+
+ It is better for security, so the userId or other sensitive data can be removed from the object.
+
+
 Q18: In the leaderboard query, explain the formula (wins * 1.0 / total_games). Why multiply by 1.0? What happens without it?
+
+ Multiplying by 1.0 ensures that the number won’t be rounded to the nearest whole number. Without it, this would either be rounded to 0 or 1, depending on what the win-rate is, instead of the actual decimal.
+
 Q19: Why do we use UUIDs (uuidv4()) for player IDs instead of auto-incrementing integers (1, 2, 3...)? Give at least two advantages.
+
+ Auto-incremented IDs are easy to guess, leading to security issues. Using UUIDs prevents this by having random IDs. Auto-incremented IDs can also create issues if you were to merge tables, since it is likely that both will share values.
+
 Q20: In the ORDER BY clause: ORDER BY wins DESC, (wins * 1.0 / total_games) DESC, why do we sort by TWO things? What problem does this solve?
 
+ We sort by two things in case there needs to be a tiebreaker. If two things share the first result, the second result will determine what will go first, this prevents it from having a random order when there is a tie.
